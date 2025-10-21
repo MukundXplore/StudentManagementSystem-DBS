@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - Sign In</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="page-header">
+    <div class="header-content">
+        <img src="https://sau.int/wp-content/themes/sau/ae/images/sau-white-logo.png" alt="SAU Logo" class="header-logo">
+        <div class="header-text">
+            <span class="header-title">SOUTH ASIAN UNIVERSITY</span>
+            <span class="header-subtitle">A University Established by SAARC Nations</span>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <div class="container">
+        <section class="wrapper">
+            <div class="heading">
+                <h1 class="text text-large">University Access Portal</h1>
+                <p class="text text-normal">Student User? <span><a href="student-sign-in.html" class="text text-links">Access here.</a></span>
+                </p>
+            </div>
+            <form name="adminSignin" class="form">
+                <div class="input-control">
+                    <label for="adminId" class="input-label" hidden>Admin ID</label>
+                    <input type="text" name="adminId" id="adminId" class="input-field" placeholder="User - Admin ID" required>
+                    <!-- This will be the admin's unique identifier aka same as internet login id and password -->
+                </div>
+                <div class="input-control">
+                    <label for="password" class="input-label" hidden>Password</label>
+                    <input type="password" name="password" id="password" class="input-field" placeholder="Password" required>
+                </div>
+                <div class="input-control">
+                    <button type="submit" class="submit-btn">Admin Sign In</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</main>
+</body>
+</html>
