@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Sign In</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header class="page-header">
+    <div class="header-content">
+        <img src="../../assets/images/sau-white-logo.png" alt="SAU Logo" class="header-logo">
+        <div class="header-text">
+            <span class="header-title">SOUTH ASIAN UNIVERSITY</span>
+            <span class="header-subtitle">A University Established by SAARC Nations</span>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <div class="container">
+        <section class="wrapper">
+            <div class="heading">
+                <h1 class="text text-large">Faculty Access Portal</h1>
+                <p class="text text-normal">Admin User? <span><a href="../admin/" class="text text-links">Access here.</a></span>
+                </p>
+                <p class="text text-normal">Student User? <span><a href="../student/" class="text text-links">Access here.</a></span>
+                </p>
+            </div>
+            <form name="studentSignin" class="form">
+                <div class="input-control">
+                    <label for="facultyId" class="input-label" hidden>Faculty ID</label>
+                    <input type="text" name="facultyId" id="facultyId" class="input-field" placeholder="Faculty ID Number" required>
+                </div>
+                 <div class="input-control">
+                    <label for="password" class="input-label" hidden>Password</label>
+                    <input type="password" name="password" id="password" class="input-field" placeholder="Password" required>
+                </div>
+                <div class="input-control">
+                    <button type="submit" class="submit-btn">Faculty Sign In</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</main>
+</body>
+</html>
