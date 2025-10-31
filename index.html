@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            background-color: #004a9f;
+            color: #fff;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .header-logo {
+            height: 60px;
+        }
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .header-title {
+            font-size: 1.7rem;
+            font-weight: bold;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        .header-subtitle {
+            font-size: 1rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<header class="page-header">
+    <div class="header-content">
+        <img src="./assets/images/sau-white-logo.png" alt="SAU Logo" class="header-logo">
+        <div class="header-text">
+            <span class="header-title">SOUTH ASIAN UNIVERSITY</span>
+            <span class="header-subtitle">A University Established by SAARC Nations</span>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <div class="container">
+        <section class="wrapper">
+            <div class="heading">
+                <h1 class="text text-large">Welcome to Student Management System</h1>
+                <br> 
+                <p class="text text-normal">This system helps you manage student information, track academic records, and generate reports efficiently.</p>
+            </div>
+            <br>
+            <div class="navigation-buttons">
+                <div class="input-control">
+                    <button type="button" class="submit-btn" onclick="location.href='./sign-in/admin'">
+                        Admin Sign-In
+                    </button>
+                </div>
+                <div class="input-control">
+                    <button type="button" class="submit-btn" onclick="location.href='./sign-in/students'">
+                        Student Sign-In
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+</body>
+</html>
