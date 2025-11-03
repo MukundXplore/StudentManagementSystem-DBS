@@ -55,7 +55,9 @@
             <div class="heading">
                 <h1 class="text text-large">Welcome to Student Management System</h1>
                 <br> 
-                <p class="text text-normal">This system helps you manage student information, track academic records, and generate reports efficiently.</p>
+                <p class="text text-normal">
+                    This system helps you manage student information and track academic records. It provides secure, role-based access for administrators, faculty, and students to maintain profiles, record grades and attendance, and generate reports to monitor academic progress.
+                </p></p>
             </div>
             <br>
             <div class="navigation-buttons">
@@ -64,6 +66,14 @@
                         Admin Sign-In
                     </button>
                 </div>
+
+                <!-- Faculty button inserted between Admin and Student -->
+                <div class="input-control">
+                    <button type="button" class="submit-btn" onclick="location.href='./sign-in/faculty'">
+                        Faculty Sign-In
+                    </button>
+                </div>
+
                 <div class="input-control">
                     <button type="button" class="submit-btn" onclick="location.href='./sign-in/students'">
                         Student Sign-In
