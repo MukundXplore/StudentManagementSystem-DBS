@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrolled Students</title>
+    <link rel="stylesheet" href="/assets/css/faculty.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+
+            <ul class="nav-menu">
+                <button class="nav-btn" onclick="location.href='dashboard.html'"><i class="fas fa-columns"></i>
+                    Dashboard</button>
+                <button class="nav-btn "><i class="fas fa-book"></i> My Courses</button>
+                <button class="nav-btn active" onclick="location.href='students.html'"><i class="fas fa-users"></i>
+                    Enrolled Students</button>
+                <button class="nav-btn" onclick="location.href='assignments.html'"><i class="fas fa-tasks"></i>
+                    Assignments</button>
+                <button class="nav-btn" onclick="location.href='submissions.html'"><i class="fas fa-file-upload"></i>
+                    Submissions</button>
+                <button class="nav-btn" onclick="location.href='attendance.html'"><i class="fas fa-check-circle"></i>
+                    Attendance</button>
+                <button class="nav-btn" onclick="location.href='exams.html'"><i class="fas fa-pencil-ruler"></i> Exams &
+                    Marks</button>
+                <button class="nav-btn" onclick="location.href='feedback.html'"><i class="fas fa-comment-dots"></i>
+                    Feedback</button>
+                <button class="nav-btn" onclick="location.href='announcements.html'"><i class="fas fa-bullhorn"></i>
+                    Announcements</button>
+                <button class="nav-btn" onclick="location.href='documents.html'"><i class="fas fa-folder-open"></i>
+                    Documents</button>
+            </ul>
+
+            <div class="logout" onclick="location.href='login.html'" style="cursor:pointer;">
+                <i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search students...">
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-info">
+                        <h4>Dr. John Doe</h4>
+                        <span>Department of Computer Science</span>
+                    </div>
+                    <img src="https://i.pravatar.cc/150?img=11" class="avatar">
+                </div>
+            </header>
+
+            <!-- BANNER -->
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>Enrolled Students</h1>
+                    <p>View the list of students enrolled in your courses.</p>
+                </div>
+                <div class="banner-img">
+                    <i class="fas fa-users"></i>
+                </div>
+            </div>
+
+            <!-- STUDENTS LIST -->
+            <div class="dashboard-grid">
+
+                <div class="left-column">
+                    <section>
+                        <div class="header-row">
+                            <div class="section-title">Select Course</div>
+                        </div>
+
+                        <select class="nice-select"
+                            style="padding: 12px; width: 100%; border-radius: 10px; border: 1px solid #ccc;">
+                            <option>Object Oriented Programming</option>
+                            <option>Database Management Systems</option>
+                            <option>Data Structures</option>
+                            <option>Operating Systems</option>
+                        </select>
+                    </section>
+
+                    <section style="margin-top: 20px;">
+                        <div class="header-row">
+                            <div class="section-title">Students List</div>
+                            <span class="see-all">Total: 60</span>
+                        </div>
+
+                        <div class="notices-card">
+
+                            <div class="notice-item">
+                                <h5>20200101 - Alice Johnson</h5>
+                                <p>B.Tech CSE | alice@example.com</p>
+                            </div>
+
+                            <div class="notice-item">
+                                <h5>20200102 - Rahul Verma</h5>
+                                <p>B.Tech CSE | rahul@example.com</p>
+                            </div>
+
+                            <div class="notice-item">
+                                <h5>20200103 - Meera Sharma</h5>
+                                <p>B.Tech CSE | meera@example.com</p>
+                            </div>
+
+                            <div class="notice-item">
+                                <h5>20200104 - Jason Park</h5>
+                                <p>B.Tech CSE | jason@example.com</p>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="right-column">
+
+                    <div>
+                        <div class="header-row">
+                            <div class="section-title">Top Students</div>
+                            <span class="see-all">See all</span>
+                        </div>
+
+                        <div class="instructors-list">
+                            <img src="https://i.pravatar.cc/150?img=5" class="instructor-img">
+                            <img src="https://i.pravatar.cc/150?img=9" class="instructor-img">
+                            <img src="https://i.pravatar.cc/150?img=3" class="instructor-img">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="header-row" style="margin-top:20px;">
+                            <div class="section-title">Recent Activity</div>
+                            <span class="see-all">See all</span>
+                        </div>
+
+                        <div class="notices-card">
+
+                            <div class="notice-item">
+                                <h5>Attendance Updated</h5>
+                                <p>You marked attendance for OOP today.</p>
+                            </div>
+
+                            <div class="notice-item">
+                                <h5>Assignment Viewed</h5>
+                                <p>Students checked the new assignment posted.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

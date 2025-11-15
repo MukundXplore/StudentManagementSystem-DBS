@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignments</title>
+
+    <!-- Correct CSS file -->
+    <link rel="stylesheet" href="/assets/css/faculty.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+
+            <ul class="nav-menu">
+                <button class="nav-btn" onclick="location.href='dashboard.html'"><i class="fas fa-columns"></i>
+                    Dashboard</button>
+                <button class="nav-btn" onclick="location.href='courses.html'"><i class="fas fa-book"></i> My
+                    Courses</button>
+                <button class="nav-btn" onclick="location.href='students.html'"><i class="fas fa-users"></i> Enrolled
+                    Students</button>
+                <button class="nav-btn active" onclick="location.href='assignments.html'"><i class="fas fa-tasks"></i>
+                    Assignments</button>
+                <button class="nav-btn" onclick="location.href='submissions.html'"><i class="fas fa-file-upload"></i>
+                    Submissions</button>
+                <button class="nav-btn" onclick="location.href='attendance.html'"><i class="fas fa-check-circle"></i>
+                    Attendance</button>
+                <button class="nav-btn" onclick="location.href='exams.html'"><i class="fas fa-pencil-ruler"></i> Exams &
+                    Marks</button>
+                <button class="nav-btn" onclick="location.href='feedback.html'"><i class="fas fa-comment-dots"></i>
+                    Feedback</button>
+                <button class="nav-btn" onclick="location.href='announcements.html'"><i class="fas fa-bullhorn"></i>
+                    Announcements</button>
+                <button class="nav-btn" onclick="location.href='documents.html'"><i class="fas fa-folder-open"></i>
+                    Documents</button>
+            </ul>
+
+            <div class="logout" onclick="location.href='login.html'" style="cursor:pointer;">
+                <i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout
+            </div>
+
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search assignments...">
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-info">
+                        <h4>Dr. John Doe</h4>
+                        <span>Department of Computer Science</span>
+                    </div>
+                    <img src="https://i.pravatar.cc/150?img=11" class="avatar">
+                </div>
+            </header>
+
+            <!-- BANNER -->
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>Your Assignments</h1>
+                    <p>Create, edit and manage assignments for your courses.</p>
+                </div>
+                <div class="banner-img">
+                    <i class="fas fa-tasks"></i>
+                </div>
+            </div>
+
+            <!-- CONTENT AREA -->
+            <div class="dashboard-grid">
+
+                <div class="left-column">
+
+                    <!-- CREATE ASSIGNMENT BUTTON -->
+                    <section>
+                        <div class="header-row">
+                            <div class="section-title">Assignments</div>
+                            <button class="btn-view" style="padding:10px 15px;"
+                                onclick="location.href='create_assignment.html'">
+                                <i class="fas fa-plus"></i> Create Assignment
+                            </button>
+                        </div>
+
+                        <div class="notices-card">
+
+                            <div class="notice-item">
+                                <h5>Assignment 1 — OOP</h5>
+                                <p>Due: Sep 15 | Total Marks: 20</p>
+                                <a href="#" class="notice-link">Manage</a>
+                            </div>
+
+                            <div class="notice-item">
+                                <h5>Assignment 2 — DBMS</h5>
+                                <p>Due: Sep 20 | Total Marks: 30</p>
+                                <a href="#" class="notice-link">Manage</a>
+                            </div>
+
+                            <div class="notice-item">
+                                <h5>Lab Report — Data Structures</h5>
+                                <p>Due: Sep 22 | Total Marks: 10</p>
+                                <a href="#" class="notice-link">Manage</a>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <aside class="right-column">
+
+                    <div>
+                        <div class="header-row">
+                            <div class="section-title">Recent Submission Activity</div>
+                            <span class="see-all">See all</span>
+                        </div>
+
+                        <div class="notices-card">
+
+                            <div class="notice-item">
+                                <h5>5 Students Submitted</h5>
+                                <p>DBMS Assignment 2 received 5 new submissions.</p>
+                            </div>
+
+                            <div class="notice-item">
+                                <h5>Submission Reminder</h5>
+                                <p>OOP Assignment 1 deadline approaching.</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

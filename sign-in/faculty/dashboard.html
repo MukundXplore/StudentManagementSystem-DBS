@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="/assets/css/faculty.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+
+            <ul class="nav-menu">
+                <button class="nav-btn active" onclick="location.href='dashboard.html'"><i class="fas fa-columns"></i>
+                    Dashboard</button>
+                <button class="nav-btn" onclick="location.href='courses.html'"><i class="fas fa-book"></i> My
+                    Courses</button>
+                <button class="nav-btn" onclick="location.href='students.html'"><i class="fas fa-users"></i> Enrolled
+                    Students</button>
+                <button class="nav-btn" onclick="location.href='assignments.html'"><i class="fas fa-tasks"></i>
+                    Assignments</button>
+                <button class="nav-btn" onclick="location.href='submissions.html'"><i class="fas fa-file-upload"></i>
+                    Submissions</button>
+                <button class="nav-btn" onclick="location.href='attendance.html'"><i class="fas fa-check-circle"></i>
+                    Attendance</button>
+                <button class="nav-btn" onclick="location.href='exams.html'"><i class="fas fa-pencil-ruler"></i> Exams &
+                    Marks</button>
+                <button class="nav-btn" onclick="location.href='feedback.html'"><i class="fas fa-comment-dots"></i>
+                    Feedback</button>
+                <button class="nav-btn" onclick="location.href='announcements.html'"><i class="fas fa-bullhorn"></i>
+                    Announcements</button>
+                <button class="nav-btn" onclick="location.href='documents.html'"><i class="fas fa-folder-open"></i>
+                    Documents</button>
+            </ul>
+
+            <div class="logout" onclick="location.href='login.html'" style="cursor:pointer;">
+                <i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-info">
+                        <h4>Dr. John Doe</h4>
+                        <span>Department of Computer Science</span>
+                    </div>
+                    <img src="/assets/images/teacher.jpg" alt="User" class="avatar">
+                </div>
+            </header>
+
+            <!-- BANNER -->
+            <div class="banner">
+                <div class="date-badge">September 4, 2023</div>
+                <div class="banner-text">
+                    <h1>Welcome back, Professor!</h1>
+                    <p>Ready to teach, manage and inspire students.</p>
+                </div>
+                <div class="banner-img">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+            </div>
+
+            <!-- DASHBOARD GRID -->
+            <div class="dashboard-grid">
+
+                <!-- LEFT -->
+                <div class="left-column">
+
+                    <!-- SECTION 1: QUICK STATS -->
+                    <section>
+                        <div class="section-title">Your Overview</div>
+                        <div class="finance-cards">
+
+                            <div class="card">
+                                <div class="icon-stack"><i class="fas fa-book"></i></div>
+                                <h3>04</h3>
+                                <p>Courses Teaching</p>
+                            </div>
+
+                            <div class="card active">
+                                <div class="icon-stack"><i class="fas fa-users"></i></div>
+                                <h3>120</h3>
+                                <p>Total Students</p>
+                            </div>
+
+                            <div class="card">
+                                <div class="icon-stack"><i class="fas fa-pencil-alt"></i></div>
+                                <h3>12</h3>
+                                <p>Pending Submissions</p>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- SECTION 2: MY COURSES -->
+                    <section>
+                        <div class="header-row">
+                            <div class="section-title" style="margin-bottom:0">Courses You Teach</div>
+                            <span class="see-all">See all</span>
+                        </div>
+
+                        <div class="courses-container">
+                            <div class="course-card">
+                                <h4>Object Oriented Programming</h4>
+                                <button class="btn-view">Manage</button>
+                                <i class="fas fa-laptop-code course-icon"></i>
+                            </div>
+
+                            <div class="course-card">
+                                <h4>Database Management Systems</h4>
+                                <button class="btn-view">Manage</button>
+                                <i class="fas fa-database course-icon"></i>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <aside class="right-column">
+
+                    <!-- INSTRUCTORS (REPLACED WITH STUDENT FEEDBACK) -->
+                    <div>
+                        <div class="header-row">
+                            <div class="section-title" style="margin-bottom:0">Recent Feedback</div>
+                            <span class="see-all">See all</span>
+                        </div>
+
+                        <div class="notices-card">
+                            <div class="notice-item">
+                                <h5>Great lecture today!</h5>
+                                <p>Students appreciated the clarity of your examples.</p>
+                                <a href="#" class="notice-link">Read</a>
+                            </div>
+
+                            <div class="notice-item">
+                                <h5>Improve assignment clarity</h5>
+                                <p>Some students are confused about the project instructions.</p>
+                                <a href="#" class="notice-link">Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DAILY NOTICE = ANNOUNCEMENTS -->
+                    <div>
+                        <div class="header-row">
+                            <div class="section-title" style="margin-bottom:0">Your Announcements</div>
+                            <span class="see-all">See all</span>
+                        </div>
+
+                        <div class="notices-card">
+                            <div class="notice-item">
+                                <h5>Assignment 2 Posted</h5>
+                                <p>Please submit by next Monday. Check course portal.</p>
+                                <a href="#" class="notice-link">View</a>
+                            </div>
+
+                            <div class="notice-item">
+                                <h5>Quiz Next Week</h5>
+                                <p>DBMS Quiz will be conducted on Thursday.</p>
+                                <a href="#" class="notice-link">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
