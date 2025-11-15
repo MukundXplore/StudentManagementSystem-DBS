@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback</title>
+
+    <link rel="stylesheet" href="/assets/css/faculty.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+
+            <ul class="nav-menu">
+                <button class="nav-btn" onclick="location.href='dashboard.html'"><i class="fas fa-columns"></i>
+                    Dashboard</button>
+                <button class="nav-btn" onclick="location.href='courses.html'"><i class="fas fa-book"></i> My
+                    Courses</button>
+                <button class="nav-btn" onclick="location.href='students.html'"><i class="fas fa-users"></i> Enrolled
+                    Students</button>
+                <button class="nav-btn" onclick="location.href='assignments.html'"><i class="fas fa-tasks"></i>
+                    Assignments</button>
+                <button class="nav-btn" onclick="location.href='submissions.html'"><i class="fas fa-file-upload"></i>
+                    Submissions</button>
+                <button class="nav-btn" onclick="location.href='attendance.html'"><i class="fas fa-check-circle"></i>
+                    Attendance</button>
+                <button class="nav-btn" onclick="location.href='exams.html'"><i class="fas fa-pencil-ruler"></i> Exams &
+                    Marks</button>
+                <button class="nav-btn active" onclick="location.href='feedback.html'"><i
+                        class="fas fa-comment-dots"></i> Feedback</button>
+                <button class="nav-btn" onclick="location.href='announcements.html'"><i class="fas fa-bullhorn"></i>
+                    Announcements</button>
+                <button class="nav-btn" onclick="location.href='documents.html'"><i class="fas fa-folder-open"></i>
+                    Documents</button>
+            </ul>
+
+            <div class="logout" onclick="location.href='login.html'" style="cursor:pointer;">
+                <i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search feedback...">
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-info">
+                        <h4>Dr. John Doe</h4>
+                        <span>Department of Computer Science</span>
+                    </div>
+                    <img src="https://i.pravatar.cc/150?img=11" class="avatar">
+                </div>
+            </header>
+
+            <!-- BANNER -->
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>Student Feedback</h1>
+                    <p>Here is what your students have to say.</p>
+                </div>
+                <div class="banner-img">
+                    <i class="fas fa-comments"></i>
+                </div>
+            </div>
+
+            <!-- GRID FEEDBACK CARDS -->
+            <div class="dashboard-grid">
+
+                <div class="left-column" style="width:100%;">
+
+                    <!-- FEEDBACK GRID -->
+                    <section>
+                        <div class="header-row">
+                            <div class="section-title">All Feedback</div>
+                        </div>
+
+                        <!-- GRID CONTAINER -->
+                        <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                        gap: 20px;
+                        margin-top: 20px;
+                        overflow-y: auto;
+                    ">
+
+                            <!-- FEEDBACK CARD 1 -->
+                            <div class="card">
+                                <h3 style="margin:0;">Alice Johnson</h3>
+                                <p style="color: gray; margin: 5px 0 10px;">OOP Course</p>
+                                <p>"Your explanation of polymorphism was exceptionally clear. Thank you!"</p>
+                                <div style="font-size: 12px; color: gray; margin-top:10px;">
+                                    Submitted: Sep 10, 2023
+                                </div>
+                            </div>
+
+                            <!-- FEEDBACK CARD 2 -->
+                            <div class="card">
+                                <h3 style="margin:0;">Rahul Verma</h3>
+                                <p style="color: gray; margin: 5px 0 10px;">DBMS Course</p>
+                                <p>"Can you please upload more sample SQL queries? Helps a lot!"</p>
+                                <div style="font-size: 12px; color: gray; margin-top:10px;">
+                                    Submitted: Sep 9, 2023
+                                </div>
+                            </div>
+
+                            <!-- FEEDBACK CARD 3 -->
+                            <div class="card">
+                                <h3 style="margin:0;">Jason Park</h3>
+                                <p style="color: gray; margin: 5px 0 10px;">Data Structures</p>
+                                <p>"Your explanation of trees was awesome. The visuals helped a lot."</p>
+                                <div style="font-size: 12px; color: gray; margin-top:10px;">
+                                    Submitted: Sep 8, 2023
+                                </div>
+                            </div>
+
+                            <!-- FEEDBACK CARD 4 -->
+                            <div class="card">
+                                <h3 style="margin:0;">Meera Sharma</h3>
+                                <p style="color: gray; margin: 5px 0 10px;">Operating Systems</p>
+                                <p>"Could we please slow down a little during scheduling algorithms?"</p>
+                                <div style="font-size: 12px; color: gray; margin-top:10px;">
+                                    Submitted: Sep 7, 2023
+                                </div>
+                            </div>
+
+                            <!-- FEEDBACK CARD 5 -->
+                            <div class="card">
+                                <h3 style="margin:0;">Arjun Singh</h3>
+                                <p style="color: gray; margin: 5px 0 10px;">DBMS Course</p>
+                                <p>"Loved the ER-diagram explanation. Everything made sense."</p>
+                                <div style="font-size: 12px; color: gray; margin-top:10px;">
+                                    Submitted: Sep 5, 2023
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
