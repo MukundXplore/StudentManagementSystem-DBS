@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+    <link rel="stylesheet" href="../../assets/css/students.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area"><i class="fas fa-user-graduate"></i></div>
+            <ul class="nav-menu">
+                <button class="nav-btn" onclick="location.href='dashboard.html'"><i class="fas fa-columns"></i> Dashboard</button>
+                <button class="nav-btn" onclick="location.href='courses.html'"><i class="fas fa-book"></i> My Courses</button>
+                <button class="nav-btn" onclick="location.href='assignments.html'"><i class="fas fa-tasks"></i> Assignments</button>
+                <button class="nav-btn" onclick="location.href='grades.html'"><i class="fas fa-chart-line"></i> Grades & Exams</button>
+                <button class="nav-btn active"><i class="fas fa-check-circle"></i> Attendance</button>
+                <button class="nav-btn" onclick="location.href='timetable.html'"><i class="fas fa-calendar-alt"></i> Timetable</button>
+                <button class="nav-btn" onclick="location.href='fees.html'"><i class="fas fa-wallet"></i> Fees</button>
+            </ul>
+            <div class="logout" onclick="location.href='index.html'"><i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout</div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search attendance..."></div>
+                <div class="user-profile">
+                    <div class="user-info"><h4>Rahul Verma</h4><span>B.Tech CSE</span></div>
+                    <img src="https://i.pravatar.cc/150?img=12" class="avatar">
+                </div>
+            </header>
+
+            <div class="banner">
+                <div class="banner-text"><h1>Attendance Record</h1><p>Maintain 75% attendance to be eligible for exams.</p></div>
+                <div class="banner-img"><i class="fas fa-user-check"></i></div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="left-column">
+                    <section>
+                        <div class="section-title">Course-wise Attendance</div>
+                        <div class="notices-card">
+                            
+                            <div class="notice-item">
+                                <div class="header-row" style="margin-bottom:0;">
+                                    <h5>Data Structures (CS201)</h5>
+                                    <span class="status-pass">86%</span>
+                                </div>
+                                <div class="progress-wrapper">
+                                    <div class="progress-info"><span>Classes Attended: 26/30</span></div>
+                                    <div class="progress-bg"><div class="progress-fill" style="width: 86%;"></div></div>
+                                </div>
+                            </div>
+
+                            <div class="notice-item">
+                                <div class="header-row" style="margin-bottom:0;">
+                                    <h5>Discrete Mathematics (MA203)</h5>
+                                    <span class="status-pass">82%</span>
+                                </div>
+                                <div class="progress-wrapper">
+                                    <div class="progress-info"><span>Classes Attended: 24/29</span></div>
+                                    <div class="progress-bg"><div class="progress-fill" style="width: 82%;"></div></div>
+                                </div>
+                            </div>
+
+                            <div class="notice-item">
+                                <div class="header-row" style="margin-bottom:0;">
+                                    <h5>Operating Systems (CS204)</h5>
+                                    <span class="status-pending">72%</span>
+                                </div>
+                                <div class="progress-wrapper">
+                                    <div class="progress-info"><span>Classes Attended: 18/25 (Warning)</span></div>
+                                    <div class="progress-bg"><div class="progress-fill" style="width: 72%; background-color: #F59E0B;"></div></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="right-column">
+                    <div class="section-title">Summary</div>
+                    <div class="card active" style="height: 150px;">
+                        <h3>80.0%</h3>
+                        <p>Aggregate Attendance</p>
+                    </div>
+                    <div class="notices-card" style="margin-top:20px;">
+                        <h5>Holidays this Month</h5>
+                        <p style="font-size:13px; margin-top:5px; color:gray;">Oct 02: Gandhi Jayanti<br>Oct 24: Dussehra</p>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

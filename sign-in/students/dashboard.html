@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="../../assets/css/students.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <ul class="nav-menu">
+                <button class="nav-btn active" onclick="location.href='dashboard.html'"><i class="fas fa-columns"></i> Dashboard</button>
+                <button class="nav-btn" onclick="location.href='courses.html'"><i class="fas fa-book"></i> My Courses</button>
+                <button class="nav-btn" onclick="location.href='assignments.html'"><i class="fas fa-tasks"></i> Assignments</button>
+                <button class="nav-btn" onclick="location.href='grades.html'"><i class="fas fa-chart-line"></i> Grades & Exams</button>
+                <button class="nav-btn" onclick="location.href='attendance.html'"><i class="fas fa-check-circle"></i> Attendance</button>
+                <button class="nav-btn" onclick="location.href='timetable.html'"><i class="fas fa-calendar-alt"></i> Timetable</button>
+                <button class="nav-btn" onclick="location.href='fees.html'"><i class="fas fa-wallet"></i> Fees</button>
+            </ul>
+            <div class="logout" onclick="location.href='index.html'" style="cursor:pointer;">
+                <i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search courses, assignments...">
+                </div>
+                <div class="user-profile">
+                    <div class="user-info">
+                        <h4>Rahul Verma</h4>
+                        <span>B.Tech CSE - 3rd Year</span>
+                    </div>
+                    <img src="https://i.pravatar.cc/150?img=12" alt="Student" class="avatar">
+                </div>
+            </header>
+
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>Welcome back, Rahul!</h1>
+                    <p>You have 2 assignments pending for this week.</p>
+                </div>
+                <div class="banner-img"><i class="fas fa-graduation-cap"></i></div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="left-column">
+                    <section>
+                        <div class="section-title">Overview</div>
+                        <div class="finance-cards">
+                            <div class="card active">
+                                <div class="icon-stack"><i class="fas fa-star"></i></div>
+                                <h3>8.42</h3>
+                                <p>Current CGPA</p>
+                            </div>
+                            <div class="card">
+                                <div class="icon-stack"><i class="fas fa-user-clock"></i></div>
+                                <h3>86%</h3>
+                                <p>Overall Attendance</p>
+                            </div>
+                            <div class="card">
+                                <div class="icon-stack"><i class="fas fa-file-alt"></i></div>
+                                <h3>02</h3>
+                                <p>Pending Tasks</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="header-row">
+                            <div class="section-title">Active Courses</div>
+                            <span class="see-all" onclick="location.href='courses.html'">View All</span>
+                        </div>
+                        <div class="courses-container">
+                            <div class="course-card">
+                                <h4>Data Structures (CS201)</h4>
+                                <button class="btn-view" onclick="location.href='courses.html'">Go to Class</button>
+                                <i class="fas fa-sitemap course-icon"></i>
+                            </div>
+                            <div class="course-card" style="background: linear-gradient(135deg, #EEF0FF 0%, #D2CFFF 100%);">
+                                <h4>Discrete Mathematics (MA203)</h4>
+                                <button class="btn-view" onclick="location.href='courses.html'">Go to Class</button>
+                                <i class="fas fa-square-root-alt course-icon"></i>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="right-column">
+                    <div>
+                        <div class="header-row">
+                            <div class="section-title">Today's Schedule</div>
+                        </div>
+                        <div class="notices-card">
+                            <div class="notice-item">
+                                <h5>09:30 AM - CS201</h5>
+                                <p>Data Structures • Room AB-204</p>
+                            </div>
+                            <div class="notice-item">
+                                <h5>11:30 AM - MA203</h5>
+                                <p>Discrete Math • Room AB-108</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="header-row">
+                            <div class="section-title">Notices</div>
+                        </div>
+                        <div class="notices-card">
+                            <div class="notice-item">
+                                <h5>Exam Schedule Out</h5>
+                                <p>Mid-term dates have been released.</p>
+                                <a href="#" class="notice-link">View PDF</a>
+                            </div>
+                            <div class="notice-item">
+                                <h5>Fee Deadline</h5>
+                                <p>Last date for semester fee is Nov 30.</p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

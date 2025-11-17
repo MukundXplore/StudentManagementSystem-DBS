@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fees</title>
+    <link rel="stylesheet" href="../../assets/css/students.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area"><i class="fas fa-user-graduate"></i></div>
+            <ul class="nav-menu">
+                <button class="nav-btn" onclick="location.href='dashboard.html'"><i class="fas fa-columns"></i> Dashboard</button>
+                <button class="nav-btn" onclick="location.href='courses.html'"><i class="fas fa-book"></i> My Courses</button>
+                <button class="nav-btn" onclick="location.href='assignments.html'"><i class="fas fa-tasks"></i> Assignments</button>
+                <button class="nav-btn" onclick="location.href='grades.html'"><i class="fas fa-chart-line"></i> Grades & Exams</button>
+                <button class="nav-btn" onclick="location.href='attendance.html'"><i class="fas fa-check-circle"></i> Attendance</button>
+                <button class="nav-btn" onclick="location.href='timetable.html'"><i class="fas fa-calendar-alt"></i> Timetable</button>
+                <button class="nav-btn active"><i class="fas fa-wallet"></i> Fees</button>
+            </ul>
+            <div class="logout" onclick="location.href='index.html'"><i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout</div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search invoices..."></div>
+                <div class="user-profile">
+                    <div class="user-info"><h4>Rahul Verma</h4><span>B.Tech CSE</span></div>
+                    <img src="https://i.pravatar.cc/150?img=12" class="avatar">
+                </div>
+            </header>
+
+            <div class="banner">
+                <div class="banner-text"><h1>Fee Status</h1><p>Check pending dues and payment history.</p></div>
+                <div class="banner-img"><i class="fas fa-receipt"></i></div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="left-column">
+                    <section>
+                        <div class="section-title">Invoices</div>
+                        <div class="notices-card">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Invoice ID</th>
+                                        <th>Description</th>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#INV-2023-001</td>
+                                        <td>Semester 3 Tuition Fee</td>
+                                        <td>Aug 01, 2023</td>
+                                        <td>$1,200</td>
+                                        <td><span class="status-paid">Paid</span></td>
+                                        <td><button class="btn-view" style="padding:5px 10px; font-size:12px;">Receipt</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#INV-2023-002</td>
+                                        <td>Exam Fee</td>
+                                        <td>Oct 15, 2023</td>
+                                        <td>$50</td>
+                                        <td><span class="status-due">Due</span></td>
+                                        <td><button class="btn-view" style="padding:5px 10px; font-size:12px;">Pay Now</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="right-column">
+                    <div class="section-title">Total Due</div>
+                    <div class="card active" style="background: #FEE2E2; border-color: #EF4444;">
+                        <h3 style="color: #EF4444;">$50.00</h3>
+                        <p style="color: #B91C1C;">Pending Amount</p>
+                    </div>
+                    <div class="notices-card" style="margin-top: 20px;">
+                        <h5>Payment Methods</h5>
+                        <p>We accept Visa, MasterCard, and UPI.</p>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
