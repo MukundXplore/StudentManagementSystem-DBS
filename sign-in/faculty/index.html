@@ -1,57 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Faculty Portal - Sign In</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/login.css">
 </head>
-
 <body>
-    <header class="page-header">
-        <div class="header-content">
-            <img src="/assets/images/sau-white-logo.png" alt="SAU Logo" class="header-logo">
-            <div class="header-text">
-                <span class="header-title">SOUTH ASIAN UNIVERSITY</span>
-                <span class="header-subtitle">A University Established by SAARC Nations</span>
-            </div>
-        </div>
-    </header>
+    <canvas id="bg-canvas"></canvas>
+
     <main class="main">
         <div class="container">
-            <section class="wrapper">
-                <div class="heading">
-                    <h1 class="text text-large">Faculty Access Portal</h1>
-                    <p class="text text-normal">Admin User? <span><a href="../admin/" class="text text-links">Access
-                                here.</a></span>
-                    </p>
-                    <p class="text text-normal">Student User? <span><a href="../student/" class="text text-links">Access
-                                here.</a></span>
-                    </p>
+            <section class="login-wrapper">
+                <div class="content-split">
+                    
+                    <div class="split-left">
+                        <img src="../../assets/images/sau-white-logo.png" alt="SAU Logo" class="logo-main">
+                        <div class="logo-details">
+                            <p class="logo-text">SOUTH ASIAN UNIVERSITY</p>
+                            <p class="logo-subtext">A University Established by SAARC Nations</p>
+                        </div>
+                    </div>
+
+                    <div class="split-right">
+                        <div class="heading">
+                            <h1 class="text text-large">Faculty Access Portal</h1>
+                            <p class="text-normal">
+                                Admin User? <a href="../admin/" class="text-links">Access here.</a><br>
+                                Student User? <a href="../students/" class="text-links">Access here.</a>
+                            </p>
+                        </div>
+
+                        <form name="facultySignin" class="form" action="dashboard.html">
+                            
+                            <div class="input-control">
+                                <label for="facultyId" class="input-label" hidden>Faculty ID</label>
+                                <input type="text" name="facultyId" id="facultyId" class="input-field" placeholder="Faculty ID Number" required>
+                            </div>
+
+                            <div class="input-control">
+                                <label for="password" class="input-label" hidden>Password</label>
+                                <input type="password" name="password" id="password" class="input-field" placeholder="Password" required>
+                            </div>
+                            
+                            <div class="input-control">
+                                <button type="submit" class="submit-btn">Faculty Sign In</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <form name="studentSignin" class="form" action="../faculty/dashboard.html">
-                    <div class="input-control">
-                        <label for="facultyId" class="input-label" hidden>Faculty ID</label>
-                        <input type="text" name="facultyId" id="facultyId" class="input-field"
-                            placeholder="Faculty ID Number" required>
-                    </div>
-
-                    <div class="input-control">
-                        <label for="password" class="input-label" hidden>Password</label>
-                        <input type="password" name="password" id="password" class="input-field" placeholder="Password"
-                            required>
-                    </div>
-
-                    <div class="input-control">
-                        <button type="submit" class="submit-btn">Faculty Sign In</button>
-                    </div>
-                </form>
-
             </section>
         </div>
     </main>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            // --- Wave Settings ---
+            const waveColor = 'rgba(79, 123, 255, 0.3)';
+            const waveAmplitude = height * 0.15;
+            const waveFrequency = 0.005;
+            const waveSpeed = 0.02;
+
+            let step = 0;
+
+            function drawWave(phase, alpha) {
+                ctx.beginPath();
+                ctx.moveTo(0, height);
+
+                for (let x = 0; x < width; x++) {
+                    const y = Math.sin(x * waveFrequency + phase) * waveAmplitude + (height * 0.8);
+                    ctx.lineTo(x, y);
+                }
+
+                ctx.lineTo(width, height);
+                ctx.closePath();
+
+                ctx.fillStyle = `rgba(79, 123, 255, ${alpha})`;
+                ctx.fill();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                step += waveSpeed;
+                drawWave(step, 0.1);
+                drawWave(step + 1, 0.2);
+                drawWave(step + 2, 0.3);
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+    </script>
 </body>
-
-
 </html>
