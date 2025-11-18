@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <main class="main">
+        <div class="container">
+            <section class="login-wrapper" style="max-width: 30rem; text-align: center; padding: 3rem 2rem;">
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #F43F5E; filter: drop-shadow(0 4px 10px rgba(244, 63, 94, 0.3));"></i>
+                </div>
+
+                <h1 class="text text-large" style="text-align: center; margin-bottom: 1rem;">Invalid Credentials</h1>
+                
+                <p class="text-normal" style="text-align: center; margin-bottom: 2rem; color: #64748B;">
+                    The User ID or Password or Date of Birth you entered does not match our records. Please check your details and try again.
+                </p>
+
+                <div class="input-control">
+                    <a href="../index.html" class="submit-btn text-links" style="display:flex; justify-content:center; align-items:center; gap:0.5rem; padding:0.75rem 1rem; background:#F43F5E; color:#fff; text-decoration:none; border-radius:6px; box-shadow:0 4px 15px rgba(244,63,94,0.3); width:max-content; margin:0 auto;" role="button" aria-label="Try again">
+                        <i class="fas fa-undo" aria-hidden="true"></i>
+                        <span style="text-align:center; display:inline-block;">Try Again</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            // Using a reddish tint for the error wave to indicate alert
+            const waveColor = 'rgba(244, 63, 94, 0.3)';
+            const waveAmplitude = height * 0.1;
+            const waveFrequency = 0.005;
+            const waveSpeed = 0.02;
+
+            let step = 0;
+
+            function drawWave(phase, alpha) {
+                ctx.beginPath();
+                ctx.moveTo(0, height);
+                for (let x = 0; x < width; x++) {
+                    const y = Math.sin(x * waveFrequency + phase) * waveAmplitude + (height * 0.85);
+                    ctx.lineTo(x, y);
+                }
+                ctx.lineTo(width, height);
+                ctx.closePath();
+                // Red/Rose tint for error page
+                ctx.fillStyle = `rgba(244, 63, 94, ${alpha})`; 
+                ctx.fill();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                step += waveSpeed;
+                drawWave(step, 0.05);
+                drawWave(step + 1, 0.1);
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+    </script>
+</body>
+</html>

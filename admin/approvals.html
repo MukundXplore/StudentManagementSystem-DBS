@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pending Approvals</title>
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area"><i class="fas fa-user-shield"></i></div>
+            <div class="nav-menu">
+                <button class="nav-btn" onclick="location.href='dashboard.html'"><i class="fas fa-th-large"></i> Overview</button>
+                <button class="nav-btn" onclick="location.href='users.html'"><i class="fas fa-users-cog"></i> Manage Users</button>
+                <button class="nav-btn" onclick="location.href='courses.html'"><i class="fas fa-book"></i> Courses</button>
+                <button class="nav-btn active"><i class="fas fa-check-circle"></i> Approvals</button>
+            </div>
+            <div class="logout" onclick="location.href='index.html'"><i class="fas fa-sign-out-alt" style="margin-right:10px;"></i> Logout</div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search requests..."></div>
+                <div class="user-profile">
+                     <div style="text-align:right;"><h4>Admin User</h4><span>System Administrator</span></div>
+                    <img src="https://i.pravatar.cc/150?img=68" class="avatar">
+                </div>
+            </header>
+
+            <div class="banner">
+                <div><h1>Pending Approvals</h1><p>Review registration requests and fee waivers.</p></div>
+                <i class="fas fa-clipboard-check" style="font-size:60px; opacity:0.8;"></i>
+            </div>
+
+            <div class="table-card">
+                <div class="section-title">Requests Queue</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Type</th>
+                            <th>Applicant</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>REQ_091</td>
+                            <td>New Registration</td>
+                            <td>Rahul Verma</td>
+                            <td>Oct 10, 2023</td>
+                            <td><span class="badge pending">Pending</span></td>
+                            <td>
+                                <button class="btn-icon btn-edit" style="color:green; background:#e6fffa;"><i class="fas fa-check"></i></button>
+                                <button class="btn-icon btn-delete"><i class="fas fa-times"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>REQ_092</td>
+                            <td>Fee Waiver</td>
+                            <td>Jason Park</td>
+                            <td>Oct 12, 2023</td>
+                            <td><span class="badge pending">Pending</span></td>
+                            <td>
+                                <button class="btn-icon btn-edit" style="color:green; background:#e6fffa;"><i class="fas fa-check"></i></button>
+                                <button class="btn-icon btn-delete"><i class="fas fa-times"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
