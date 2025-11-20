@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Announcements</title>
+    <link rel="stylesheet" href="../assets/css/pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="close-sidebar" onclick="toggleSidebar()">
+                <i class="fas fa-times"></i>
+            </div>
+
+            <div class="logo-area"><i class="fas fa-user-shield"></i></div>
+
+            <nav class="nav-menu">
+                <button class="nav-btn" onclick="location.href='dashboard.html'">
+                    <i class="fas fa-th-large"></i> Overview
+                </button>
+                <button class="nav-btn" onclick="location.href='users.html'">
+                    <i class="fas fa-users-cog"></i> Manage Users
+                </button>
+                <button class="nav-btn" onclick="location.href='courses.html'">
+                    <i class="fas fa-book"></i> Programs
+                </button>
+                <button class="nav-btn" onclick="location.href='approvals.html'">
+                    <i class="fas fa-check-circle"></i> Approvals
+                </button>
+                <button class="nav-btn active" onclick="location.href='announcements.html'">
+                    <i class="fas fa-bullhorn"></i> Announcements
+                </button>
+                <button class="nav-btn">
+                    <i class="fas fa-chart-bar"></i> Reports
+                </button>
+            </nav>
+
+            <div class="logout" onclick="location.href='index.html'">
+                <i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header>
+                <div class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search announcements...">
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-info">
+                        <h4>System Administrator</h4>
+                        <span>IT Department</span>
+                    </div>
+                    <img src="https://i.pravatar.cc/150?img=68" class="avatar">
+                </div>
+            </header>
+
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>System Announcements</h1>
+                    <p>Broadcast updates to the entire university or specific groups.</p>
+                </div>
+                <div class="banner-img">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+
+                <div class="left-column">
+
+                    <section>
+                        <div class="header-row">
+                            <div class="section-title">Create New Announcement</div>
+                        </div>
+
+                        <div class="notices-card">
+                            <div class="notice-item">
+                                <form method="POST" action="/admin/post_announcement">
+
+                                    <input type="text" name="title" placeholder="Announcement Title" required>
+
+                                    <textarea name="body" placeholder="Write your announcement details here..." required style="margin-top:15px; height:120px;"></textarea>
+
+                                    <div style="margin-top:15px;">
+                                        <label style="font-size:14px; color:#4D5570; font-weight:600; margin-bottom:5px; display:block;">Target Audience</label>
+                                        <select name="scope">
+                                            <option value="Global">System-wide (Everyone)</option>
+                                            <option value="Faculty">All Faculty Members</option>
+                                            <option value="Students">All Students</option>
+                                        </select>
+                                    </div>
+
+                                    <button class="btn-view" style="margin-top: 20px; padding:12px 25px;">
+                                        Publish Announcement
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="header-row">
+                            <div class="section-title">Broadcast History</div>
+                        </div>
+
+                        <div class="notices-card">
+                            <div class="notice-item">
+                                <div class="header-row" style="margin-bottom:5px;">
+                                    <h5>Scheduled Maintenance</h5>
+                                    <span class="badge active">System-wide</span>
+                                </div>
+                                <p>Server maintenance scheduled for Saturday, 2:00 AM - 4:00 AM.</p>
+                                <span style="font-size:12px; color:gray; margin-top:5px; display:block;">Posted: Oct 25, 2023 by Admin_01</span>
+                            </div>
+
+                            <div class="notice-item">
+                                <div class="header-row" style="margin-bottom:5px;">
+                                    <h5>Fee Submission Deadline</h5>
+                                    <span class="badge pending">Students</span>
+                                </div>
+                                <p>Reminder sent to all students regarding semester fee submission.</p>
+                                <span style="font-size:12px; color:gray; margin-top:5px; display:block;">Posted: Oct 20, 2023 by Accounts</span>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <aside class="right-column">
+                    <section>
+                        <div class="header-row">
+                            <div class="section-title">Statistics</div>
+                        </div>
+                        <div class="kpi-grid" style="grid-template-columns: 1fr;">
+                            <div class="kpi-card">
+                                <h3>12</h3>
+                                <p>Active Notices</p>
+                            </div>
+                            <div class="kpi-card">
+                                <h3>4,500+</h3>
+                                <p>Users Reached</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="header-row">
+                            <div class="section-title">Quick Actions</div>
+                        </div>
+                        <div class="notices-card">
+                            <div class="notice-item">
+                                <h5>Emergency Alert</h5>
+                                <p style="font-size:12px; color:#64748B;">Trigger an immediate campus-wide alert.</p>
+                                <button class="btn-view" style="background-color:#F43F5E; width:100%; margin-top:10px; text-align:center;">Send Alert</button>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

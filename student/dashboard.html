@@ -4,36 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/students.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <div class="app-container">
-        <aside class="sidebar">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="close-sidebar" onclick="toggleSidebar()">
+                <i class="fas fa-times"></i>
+            </div>
+
             <div class="logo-area">
                 <i class="fas fa-user-graduate"></i>
             </div>
-            <ul class="nav-menu">
-                <button class="nav-btn active" onclick="location.href='dashboard.html'"><i class="fas fa-columns"></i> Dashboard</button>
-                <button class="nav-btn" onclick="location.href='courses.html'"><i class="fas fa-book"></i> My Courses</button>
-                <button class="nav-btn" onclick="location.href='assignments.html'"><i class="fas fa-tasks"></i> Assignments</button>
-                <button class="nav-btn" onclick="location.href='grades.html'"><i class="fas fa-chart-line"></i> Grades & Exams</button>
-                <button class="nav-btn" onclick="location.href='attendance.html'"><i class="fas fa-check-circle"></i> Attendance</button>
-                <button class="nav-btn" onclick="location.href='timetable.html'"><i class="fas fa-calendar-alt"></i> Timetable</button>
-                <button class="nav-btn" onclick="location.href='fees.html'"><i class="fas fa-wallet"></i> Fees</button>
-            </ul>
-            <div class="logout" onclick="location.href='index.html'" style="cursor:pointer;">
+            
+            <nav class="nav-menu">
+                <button class="nav-btn active" onclick="location.href='dashboard.html'">
+                    <i class="fas fa-columns"></i> Dashboard
+                </button>
+                <button class="nav-btn" onclick="location.href='courses.html'">
+                    <i class="fas fa-book"></i> My Courses
+                </button>
+                <button class="nav-btn" onclick="location.href='assignments.html'">
+                    <i class="fas fa-tasks"></i> Assignments
+                </button>
+                <button class="nav-btn" onclick="location.href='grades.html'">
+                    <i class="fas fa-chart-line"></i> Grades & Exams
+                </button>
+                <button class="nav-btn" onclick="location.href='attendance.html'">
+                    <i class="fas fa-check-circle"></i> Attendance
+                </button>
+                <button class="nav-btn" onclick="location.href='timetable.html'">
+                    <i class="fas fa-calendar-alt"></i> Timetable
+                </button>
+                <button class="nav-btn" onclick="location.href='fees.html'">
+                    <i class="fas fa-wallet"></i> Fees
+                </button>
+            </nav>
+            
+            <div class="logout" onclick="location.href='../index.html'">
                 <i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout
             </div>
         </aside>
 
         <main class="main-content">
             <header>
+                <div class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </div>
+
                 <div class="search-bar">
                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Search courses, assignments...">
                 </div>
+
                 <div class="user-profile">
                     <div class="user-info">
                         <h4>Rahul Verma</h4>
@@ -53,21 +79,22 @@
 
             <div class="dashboard-grid">
                 <div class="left-column">
+                    
                     <section>
                         <div class="section-title">Overview</div>
-                        <div class="finance-cards">
-                            <div class="card active">
-                                <div class="icon-stack"><i class="fas fa-star"></i></div>
+                        <div class="kpi-grid">
+                            <div class="kpi-card active">
+                                <div class="kpi-icon"><i class="fas fa-star"></i></div>
                                 <h3>8.42</h3>
                                 <p>Current CGPA</p>
                             </div>
-                            <div class="card">
-                                <div class="icon-stack"><i class="fas fa-user-clock"></i></div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon"><i class="fas fa-user-clock"></i></div>
                                 <h3>86%</h3>
                                 <p>Overall Attendance</p>
                             </div>
-                            <div class="card">
-                                <div class="icon-stack"><i class="fas fa-file-alt"></i></div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon"><i class="fas fa-file-alt"></i></div>
                                 <h3>02</h3>
                                 <p>Pending Tasks</p>
                             </div>
@@ -131,5 +158,12 @@
             </div>
         </main>
     </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
