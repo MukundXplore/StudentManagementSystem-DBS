@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../assets/css/pages.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/pages.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -19,27 +19,24 @@
             <div class="logo-area"><i class="fas fa-user-shield"></i></div>
 
             <nav class="nav-menu">
-                <button class="nav-btn active" onclick="location.href='dashboard.html'">
+                <button class="nav-btn active" onclick="location.href='{{ url_for('admin_dashboard') }}'">
                     <i class="fas fa-th-large"></i> Overview
                 </button>
-                <button class="nav-btn" onclick="location.href='users.html'">
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_users') }}'">
                     <i class="fas fa-users-cog"></i> Manage Users
                 </button>
-                <button class="nav-btn" onclick="location.href='courses.html'">
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_courses') }}'">
                     <i class="fas fa-book"></i> Programs
                 </button>
-                <button class="nav-btn" onclick="location.href='approvals.html'">
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_approvals') }}'">
                     <i class="fas fa-check-circle"></i> Approvals
                 </button>
-                <button class="nav-btn" onclick="location.href='announcements.html'">
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_announcements') }}'">
                     <i class="fas fa-bullhorn"></i> Announcements
-                </button>
-                <button class="nav-btn">
-                    <i class="fas fa-chart-bar"></i> Reports
                 </button>
             </nav>
 
-            <div class="logout" onclick="location.href='index.html'">
+            <div class="logout" onclick="location.href='{{ url_for('logout') }}'">
                 <i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout
             </div>
         </aside>
@@ -58,8 +55,8 @@
 
                 <div class="user-profile">
                     <div class="user-info">
-                        <h4>System Administrator</h4>
-                        <span>IT Department</span>
+                        <h4>{{ user_name }}</h4>
+                        <span>System Administrator</span>
                     </div>
                     <img src="https://i.pravatar.cc/150?img=68" class="avatar">
                 </div>
@@ -74,9 +71,7 @@
             </div>
 
             <div class="dashboard-grid">
-
                 <div class="left-column">
-
                     <section>
                         <div class="section-title">Real-time Statistics</div>
                         <div class="kpi-grid">
@@ -109,7 +104,7 @@
                                     <h4>User Management</h4>
                                     <p>Add, edit or suspend accounts.</p>
                                 </div>
-                                <button class="btn-view" onclick="location.href='users.html'">Manage Users</button>
+                                <button class="btn-view" onclick="location.href='{{ url_for('admin_users') }}'">Manage Users</button>
                                 <i class="fas fa-users-cog course-icon"></i>
                             </div>
 
@@ -118,99 +113,30 @@
                                     <h4>Course Catalog</h4>
                                     <p>Update syllabus and credits.</p>
                                 </div>
-                                <button class="btn-view" onclick="location.href='courses.html'">View Courses</button>
+                                <button class="btn-view" onclick="location.href='{{ url_for('admin_courses') }}'">View Courses</button>
                                 <i class="fas fa-book-open course-icon"></i>
                             </div>
                         </div>
                     </section>
-
-                    <section>
-                        <div class="header-row">
-                            <div class="section-title">System Logs</div>
-                            <span class="see-all">View Full Log</span>
-                        </div>
-                        
-                        <div class="table-card">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Time</th>
-                                        <th>Action</th>
-                                        <th>User</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>10:42 AM</td>
-                                        <td>Created new course "AI Ethics"</td>
-                                        <td>Admin_01</td>
-                                        <td><span class="badge active">Success</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>09:15 AM</td>
-                                        <td>System Backup (Daily)</td>
-                                        <td>System</td>
-                                        <td><span class="badge active">Completed</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
                 </div>
-
+                
                 <aside class="right-column">
-                    
                     <section>
                         <div class="header-row">
                             <div class="section-title">Pending Requests</div>
-                            <span class="see-all" onclick="location.href='approvals.html'">See all</span>
+                            <span class="see-all" onclick="location.href='{{ url_for('admin_approvals') }}'">See all</span>
                         </div>
-
                         <div class="table-card">
-                            <div style="border-bottom:1px dashed #E2E8F0; padding-bottom:15px; margin-bottom:15px;">
-                                <h5 style="font-size:14px; margin-bottom:5px; font-weight:600;">New Faculty Registration</h5>
-                                <p style="font-size:12px; color:#64748B;">Dr. Sarah Connor</p>
-                                <div style="margin-top:10px;">
-                                    <button class="btn-icon btn-edit"><i class="fas fa-check"></i></button>
-                                    <button class="btn-icon btn-delete"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
-                            <div>
-                                <h5 style="font-size:14px; margin-bottom:5px; font-weight:600;">Fee Waiver Request</h5>
-                                <p style="font-size:12px; color:#64748B;">Student ID: 20230045</p>
-                                <div style="margin-top:10px;">
-                                    <button class="btn-icon btn-edit"><i class="fas fa-check"></i></button>
-                                    <button class="btn-icon btn-delete"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
+                             <p>No new requests.</p>
                         </div>
                     </section>
-
-                    <section>
-                        <div class="header-row">
-                            <div class="section-title">System Notices</div>
-                            <span class="see-all" onclick="location.href='announcements.html'">+ New</span>
-                        </div>
-                        <div class="notices-card">
-                            <div class="notice-item">
-                                <h5>Maintenance Scheduled</h5>
-                                <p>Server downtime: Sat 2:00 AM - 4:00 AM.</p>
-                                <span style="font-size:12px; color:#94A3B8; display:block; margin-top:5px;">Posted Today</span>
-                            </div>
-                        </div>
-                    </section>
-
                 </aside>
-
             </div>
         </main>
     </div>
-
     <script>
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('active');
+            document.getElementById('sidebar').classList.toggle('active');
         }
     </script>
 </body>
