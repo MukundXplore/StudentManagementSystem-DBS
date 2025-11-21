@@ -13,7 +13,6 @@
         <div class="container">
             <section class="login-wrapper">
                 <div class="content-split">
-                    
                     <div class="split-left">
                         <img src="{{ url_for('static', filename='assets/images/sau-white-logo.png') }}" alt="SAU Logo" class="logo-main">
                         <div class="logo-details">
@@ -38,8 +37,8 @@
                             </div>
                             
                             <div class="input-control">
-                                <label for="dob" class="input-label" hidden>Date of Birth</label>
-                                <input type="date" name="dob" id="dob" class="input-field" required>
+                                <label for="password" class="input-label" hidden>Password</label>
+                                <input type="password" name="password" id="password" class="input-field" placeholder="Enter Password" required>
                             </div>
                             
                             <div class="input-control">
@@ -51,18 +50,5 @@
             </section>
         </div>
     </main>
-    <script>
-        const canvas = document.getElementById('bg-canvas');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            let width = canvas.width = window.innerWidth;
-            let height = canvas.height = window.innerHeight;
-            window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
-            const waveColor = 'rgba(79, 123, 255, 0.3)'; const waveAmplitude = height * 0.15; const waveFrequency = 0.005; const waveSpeed = 0.02; let step = 0;
-            function drawWave(phase, alpha) { ctx.beginPath(); ctx.moveTo(0, height); for (let x = 0; x < width; x++) { const y = Math.sin(x * waveFrequency + phase) * waveAmplitude + (height * 0.8); ctx.lineTo(x, y); } ctx.lineTo(width, height); ctx.closePath(); ctx.fillStyle = `rgba(79, 123, 255, ${alpha})`; ctx.fill(); }
-            function animate() { ctx.clearRect(0, 0, width, height); step += waveSpeed; drawWave(step, 0.1); drawWave(step + 1, 0.2); drawWave(step + 2, 0.3); requestAnimationFrame(animate); }
-            animate();
-        }
-    </script>
-</body>
+    </body>
 </html>
