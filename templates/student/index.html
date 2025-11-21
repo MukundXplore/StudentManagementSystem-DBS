@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Student Portal - Sign In</title>
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/login.css') }}">
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
@@ -15,7 +15,7 @@
                 <div class="content-split">
                     
                     <div class="split-left">
-                        <img src="../assets/images/sau-white-logo.png" alt="SAU Logo" class="logo-main">
+                        <img src="{{ url_for('static', filename='assets/images/sau-white-logo.png') }}" alt="SAU Logo" class="logo-main">
                         <div class="logo-details">
                             <p class="logo-text">SOUTH ASIAN UNIVERSITY</p>
                             <p class="logo-subtext">A University Established by SAARC Nations</p>
@@ -26,15 +26,15 @@
                         <div class="heading">
                             <h1 class="text text-large">Student Access Portal</h1>
                             <p class="text-normal">
-                                Admin User? <a href="../admin/" class="text-links">Access here.</a><br>
-                                Faculty User? <a href="../faculty/" class="text-links">Access here.</a>
+                                Admin User? <a href="{{ url_for('admin_login') }}" class="text-links">Access here.</a><br>
+                                Faculty User? <a href="{{ url_for('faculty_login') }}" class="text-links">Access here.</a>
                             </p>
                         </div>
 
-                        <form name="studentSignin" class="form">
+                        <form name="studentSignin" class="form" method="POST">
                             <div class="input-control">
                                 <label for="enrollmentId" class="input-label" hidden>Enrollment ID</label>
-                                <input type="text" name="enrollmentId" id="enrollmentId" class="input-field" placeholder="Enrollment ID" required>
+                                <input type="text" name="enrollmentId" id="enrollmentId" class="input-field" placeholder="Roll No (e.g., CS 2023-001) or ID" required>
                             </div>
                             
                             <div class="input-control">
@@ -51,51 +51,16 @@
             </section>
         </div>
     </main>
-
     <script>
         const canvas = document.getElementById('bg-canvas');
         if (canvas) {
             const ctx = canvas.getContext('2d');
             let width = canvas.width = window.innerWidth;
             let height = canvas.height = window.innerHeight;
-
-            window.addEventListener('resize', () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            });
-
-            const waveColor = 'rgba(79, 123, 255, 0.3)';
-            const waveAmplitude = height * 0.15;
-            const waveFrequency = 0.005;
-            const waveSpeed = 0.02;
-
-            let step = 0;
-
-            function drawWave(phase, alpha) {
-                ctx.beginPath();
-                ctx.moveTo(0, height);
-
-                for (let x = 0; x < width; x++) {
-                    const y = Math.sin(x * waveFrequency + phase) * waveAmplitude + (height * 0.8);
-                    ctx.lineTo(x, y);
-                }
-
-                ctx.lineTo(width, height);
-                ctx.closePath();
-
-                ctx.fillStyle = `rgba(79, 123, 255, ${alpha})`;
-                ctx.fill();
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, width, height);
-                step += waveSpeed;
-                drawWave(step, 0.1);
-                drawWave(step + 1, 0.2);
-                drawWave(step + 2, 0.3);
-                requestAnimationFrame(animate);
-            }
-
+            window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
+            const waveColor = 'rgba(79, 123, 255, 0.3)'; const waveAmplitude = height * 0.15; const waveFrequency = 0.005; const waveSpeed = 0.02; let step = 0;
+            function drawWave(phase, alpha) { ctx.beginPath(); ctx.moveTo(0, height); for (let x = 0; x < width; x++) { const y = Math.sin(x * waveFrequency + phase) * waveAmplitude + (height * 0.8); ctx.lineTo(x, y); } ctx.lineTo(width, height); ctx.closePath(); ctx.fillStyle = `rgba(79, 123, 255, ${alpha})`; ctx.fill(); }
+            function animate() { ctx.clearRect(0, 0, width, height); step += waveSpeed; drawWave(step, 0.1); drawWave(step + 1, 0.2); drawWave(step + 2, 0.3); requestAnimationFrame(animate); }
             animate();
         }
     </script>

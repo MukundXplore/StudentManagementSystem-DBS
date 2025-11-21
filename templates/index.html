@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Student Management System</title>
-    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/login.css') }}">
 </head>
 <body>
 <canvas id="bg-canvas"></canvas>
@@ -14,7 +14,7 @@
         <section class="login-wrapper">
             <div class="content-split">
                 <div class="split-left">
-                    <img src="./assets/images/sau-white-logo.png" alt="SAU Logo" class="logo-main">
+                    <img src="{{ url_for('static', filename='assets/images/sau-white-logo.png') }}" alt="SAU Logo" class="logo-main">
                     <div class="logo-details">
                         <br>
                         <p class="logo-text">SOUTH ASIAN UNIVERSITY</p>
@@ -32,17 +32,17 @@
                     
                     <div class="navigation-buttons">
                         <div class="input-control">
-                            <button type="button" class="submit-btn" onclick="location.href='./admin'">
+                            <button type="button" class="submit-btn" onclick="location.href='{{ url_for('admin_login') }}'">
                                 Admin Sign-In
                             </button>
                         </div>
                         <div class="input-control">
-                            <button type="button" class="submit-btn" onclick="location.href='./faculty'">
+                            <button type="button" class="submit-btn" onclick="location.href='{{ url_for('faculty_login') }}'">
                                 Faculty Sign-In
                             </button>
                         </div>
                         <div class="input-control">
-                            <button type="button" class="submit-btn" onclick="location.href='./student'">
+                            <button type="button" class="submit-btn" onclick="location.href='{{ url_for('student_login') }}'">
                                 Student Sign-In
                             </button>
                         </div>
@@ -65,7 +65,6 @@
             height = canvas.height = window.innerHeight;
         });
 
-        // --- Wave Settings ---
         const waveColor = 'rgba(79, 123, 255, 0.3)';
         const waveAmplitude = height * 0.15;
         const waveFrequency = 0.005;
@@ -76,15 +75,12 @@
         function drawWave(phase, alpha) {
             ctx.beginPath();
             ctx.moveTo(0, height);
-
             for (let x = 0; x < width; x++) {
                 const y = Math.sin(x * waveFrequency + phase) * waveAmplitude + (height * 0.8);
                 ctx.lineTo(x, y);
             }
-
             ctx.lineTo(width, height);
             ctx.closePath();
-
             ctx.fillStyle = `rgba(79, 123, 255, ${alpha})`;
             ctx.fill();
         }
@@ -97,7 +93,6 @@
             drawWave(step + 2, 0.3);
             requestAnimationFrame(animate);
         }
-
         animate();
     }
 </script>
