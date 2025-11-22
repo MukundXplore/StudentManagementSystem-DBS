@@ -6,6 +6,18 @@
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/pages.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // Forces a reload if the user hits the "Back" button after logging out
+        window.addEventListener( "pageshow", function ( event ) {
+            var historyTraversal = event.persisted || 
+                                   ( typeof window.performance != "undefined" && 
+                                        window.performance.navigation.type === 2 );
+            if ( historyTraversal ) {
+                // Reload the page to trigger the server-side session check
+                window.location.reload();
+            }
+        });
+    </script>
 </head>
 <body>
 
@@ -44,7 +56,7 @@
                 </button>
             </nav>
             
-            <div class="logout" onclick="location.href='{{ url_for('logout') }}'">
+            <div class="logout" onclick="location.href='{{ url_for('auth.logout') }}'">
                 <i class="fas fa-sign-out-alt" style="margin-right: 15px;"></i> Logout
             </div>
         </aside>
