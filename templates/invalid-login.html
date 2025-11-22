@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Denied</title>
-    <link rel="stylesheet" href="/assets/css/login.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/login.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -21,11 +21,11 @@
                 <h1 class="text text-large" style="text-align: center; margin-bottom: 1rem;">Invalid Credentials</h1>
                 
                 <p class="text-normal" style="text-align: center; margin-bottom: 2rem; color: #64748B;">
-                    The User ID or Password or Date of Birth you entered does not match our records. Please check your details and try again.
+                    The User ID or Password you entered does not match our records. Please check your details and try again.
                 </p>
 
                 <div class="input-control">
-                    <a href="../index.html" class="submit-btn text-links" style="display:flex; justify-content:center; align-items:center; gap:0.5rem; padding:0.75rem 1rem; background:#F43F5E; color:#fff; text-decoration:none; border-radius:6px; box-shadow:0 4px 15px rgba(244,63,94,0.3); width:max-content; margin:0 auto;" role="button" aria-label="Try again">
+                    <a href="{{ url_for('auth.home') }}" class="submit-btn text-links" style="display:flex; justify-content:center; align-items:center; gap:0.5rem; padding:0.75rem 1rem; background:#F43F5E; color:#fff; text-decoration:none; border-radius:6px; box-shadow:0 4px 15px rgba(244,63,94,0.3); width:max-content; margin:0 auto;" role="button" aria-label="Try again">
                         <i class="fas fa-undo" aria-hidden="true"></i>
                         <span style="text-align:center; display:inline-block;">Try Again</span>
                     </a>

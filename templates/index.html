@@ -32,17 +32,17 @@
                     
                     <div class="navigation-buttons">
                         <div class="input-control">
-                            <button type="button" class="submit-btn" onclick="location.href='{{ url_for('admin_login') }}'">
+                            <button type="button" class="submit-btn" onclick="location.href='{{ url_for('auth.admin_login') }}'">
                                 Admin Sign-In
                             </button>
                         </div>
                         <div class="input-control">
-                            <button type="button" class="submit-btn" onclick="location.href='{{ url_for('faculty_login') }}'">
+                            <button type="button" class="submit-btn" onclick="location.href='{{ url_for('auth.faculty_login') }}'">
                                 Faculty Sign-In
                             </button>
                         </div>
                         <div class="input-control">
-                            <button type="button" class="submit-btn" onclick="location.href='{{ url_for('student_login') }}'">
+                            <button type="button" class="submit-btn" onclick="location.href='{{ url_for('auth.student_login') }}'">
                                 Student Sign-In
                             </button>
                         </div>
