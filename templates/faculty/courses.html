@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Courses</title>
-    <link rel="stylesheet" href="../assets/css/pages.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/pages.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -87,32 +87,16 @@
                         </div>
 
                         <div class="courses-container">
-
-                            <div class="course-card">
-                                <h4>Object Oriented Programming</h4>
-                                <button class="btn-view">Manage</button>
-                                <i class="fas fa-laptop-code course-icon"></i>
-                            </div>
-
-                            <div class="course-card">
-                                <h4>Database Management Systems</h4>
-                                <button class="btn-view">Manage</button>
-                                <i class="fas fa-database course-icon"></i>
-                            </div>
-
-                            <div class="course-card">
-                                <h4>Data Structures</h4>
-                                <button class="btn-view">Manage</button>
-                                <i class="fas fa-sitemap course-icon"></i>
-                            </div>
-
-                            <div class="course-card">
-                                <h4>Operating Systems</h4>
-                                <button class="btn-view">Manage</button>
-                                <i class="fas fa-memory course-icon"></i>
-                            </div>
-
-                        </div>
+    {% for course in courses %}
+    <div class="course-card">
+        <h4>{{ course.CourseName }}</h4> <p style="font-size:13px; color:#666;">Credits: {{ course.Credits }}</p>
+        <button class="btn-view">Manage</button>
+        <i class="fas fa-book course-icon"></i>
+    </div>
+    {% else %}
+    <p>No courses assigned yet.</p>
+    {% endfor %}
+</div>
                     </section>
 
                 </div>

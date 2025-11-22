@@ -26,8 +26,8 @@
                         <div class="heading">
                             <h1 class="text text-large">Faculty Access Portal</h1>
                             <p class="text-normal">
-                                Admin User? <a href="{{ url_for('admin_login') }}" class="text-links">Access here.</a><br>
-                                Student User? <a href="{{ url_for('student_login') }}" class="text-links">Access here.</a>
+                                Admin User? <a href="{{ url_for('auth.admin_login') }}" class="text-links">Access here.</a><br>
+                                Student User? <a href="{{ url_for('auth.student_login') }}" class="text-links">Access here.</a>
                             </p>
                         </div>
 
@@ -58,7 +58,7 @@
             let width = canvas.width = window.innerWidth;
             let height = canvas.height = window.innerHeight;
             window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
-            const waveColor = 'rgba(79, 123, 255, 0.3)'; const waveAmplitude = height * 0.15; const waveFrequency = 0.005; const waveSpeed = 0.02; let step = 0;
+            const waveAmplitude = height * 0.15; const waveFrequency = 0.005; const waveSpeed = 0.02; let step = 0;
             function drawWave(phase, alpha) { ctx.beginPath(); ctx.moveTo(0, height); for (let x = 0; x < width; x++) { const y = Math.sin(x * waveFrequency + phase) * waveAmplitude + (height * 0.8); ctx.lineTo(x, y); } ctx.lineTo(width, height); ctx.closePath(); ctx.fillStyle = `rgba(79, 123, 255, ${alpha})`; ctx.fill(); }
             function animate() { ctx.clearRect(0, 0, width, height); step += waveSpeed; drawWave(step, 0.1); drawWave(step + 1, 0.2); drawWave(step + 2, 0.3); requestAnimationFrame(animate); }
             animate();
