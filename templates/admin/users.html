@@ -5,114 +5,158 @@
     <title>Manage Users</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/pages.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Simple Modal Styles */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+        .modal-content { background-color: #fff; margin: 5% auto; padding: 20px; border-radius: 15px; width: 400px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .close-modal { float: right; font-size: 24px; cursor: pointer; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px; }
+    </style>
 </head>
 <body>
     <div class="app-container">
+        {% include 'admin/sidebar.html' ignore missing %}
+        
         <aside class="sidebar" id="sidebar">
-            <div class="close-sidebar" onclick="toggleSidebar()">
-                <i class="fas fa-times"></i>
-            </div>
             <div class="logo-area"><i class="fas fa-user-shield"></i></div>
-            
             <nav class="nav-menu">
-                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard') }}'">
-                    <i class="fas fa-th-large"></i> Overview
-                </button>
-                <button class="nav-btn active" onclick="location.href='{{ url_for('admin_users') }}'">
-                    <i class="fas fa-users-cog"></i> Manage Users
-                </button>
-                <button class="nav-btn" onclick="location.href='{{ url_for('admin_courses') }}'">
-                    <i class="fas fa-book"></i> Programs
-                </button>
-                <button class="nav-btn" onclick="location.href='{{ url_for('admin_approvals') }}'">
-                    <i class="fas fa-check-circle"></i> Approvals
-                </button>
-                <button class="nav-btn" onclick="location.href='{{ url_for('admin_announcements') }}'">
-                    <i class="fas fa-bullhorn"></i> Announcements
-                </button>
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard.dashboard') }}'">Overview</button>
+                <button class="nav-btn active">Manage Users</button>
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard.courses') }}'">Programs</button>
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard.approvals') }}'">Approvals</button>
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard.announcements') }}'">Announcements</button>
             </nav>
-
-            <div class="logout" onclick="location.href='{{ url_for('logout') }}'">
-                <i class="fas fa-sign-out-alt" style="margin-right:10px;"></i> Logout
-            </div>
+            <div class="logout" onclick="location.href='{{ url_for('auth.logout') }}'">Logout</div>
         </aside>
 
         <main class="main-content">
             <header>
-                <div class="menu-toggle" onclick="toggleSidebar()">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search users by ID or Name...">
-                </div>
+                <form action="" method="GET" style="width: 400px;">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" name="q" placeholder="Search users..." value="{{ request.args.get('q', '') }}">
+                    </div>
+                </form>
                 <div class="user-profile">
-                     <div style="text-align:right;">
-                        <h4>{{ user_name }}</h4>
-                        <span>System Administrator</span>
-                     </div>
-                    <img src="https://i.pravatar.cc/150?img=68" class="avatar">
+                    <div class="user-info"><h4>{{ user_name }}</h4><span>System Administrator</span></div>
                 </div>
             </header>
 
-            <div class="banner">
-                <div class="banner-text">
-                    <h1>User Management</h1>
-                    <p>Add, edit, or remove student and faculty accounts.</p>
-                </div>
-                <div class="banner-img">
-                    <i class="fas fa-users"></i>
-                </div>
-            </div>
-
             <div class="table-card">
                 <div class="section-title" style="display:flex; justify-content:space-between;">
-                    <span>All Users</span>
-                    <button style="background:#4F7BFF; color:white; border:none; padding:8px 15px; border-radius:8px; cursor:pointer;">+ Add New User</button>
+                    <span>Registered Students</span>
+                    <button onclick="document.getElementById('addStudentModal').style.display='block'" 
+                            style="background:#4F7BFF; color:white; border:none; padding:8px 15px; border-radius:8px; cursor:pointer;">
+                        + Add Student
+                    </button>
                 </div>
                 <table>
                     <thead>
-                        <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Department</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
+                        <tr><th>Roll No</th><th>Name</th><th>Program</th><th>Email</th><th>Action</th></tr>
                     </thead>
                     <tbody>
+                        {% for student, person, program in students %}
                         <tr>
-                            <td>20200101</td>
-                            <td>Alice Johnson</td>
-                            <td>Student</td>
-                            <td>Computer Science</td>
-                            <td><span class="badge active">Active</span></td>
+                            <td>{{ student.RollNo }}</td>
+                            <td>{{ person.Name }}</td>
+                            <td>{{ program.ProgramCode }}</td>
+                            <td>{{ person.Email }}</td>
                             <td>
-                                <button class="btn-icon btn-edit"><i class="fas fa-pen"></i></button>
-                                <button class="btn-icon btn-delete"><i class="fas fa-trash"></i></button>
+                                <a href="{{ url_for('admin_dashboard.delete_user', user_id=student.StudentID, role='Student') }}" 
+                                   class="btn-icon btn-delete" onclick="return confirm('Delete this student?')">
+                                   <i class="fas fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+
+            <div class="table-card">
+                <div class="section-title" style="display:flex; justify-content:space-between;">
+                    <span>Registered Faculty</span>
+                    <button onclick="document.getElementById('addFacultyModal').style.display='block'" 
+                            style="background:#4F7BFF; color:white; border:none; padding:8px 15px; border-radius:8px; cursor:pointer;">
+                        + Add Faculty
+                    </button>
+                </div>
+                <table>
+                    <thead>
+                        <tr><th>Name</th><th>Designation</th><th>Department</th><th>Email</th><th>Action</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for fac, person, dept in faculty %}
                         <tr>
-                            <td>FAC_005</td>
-                            <td>Dr. John Doe</td>
-                            <td>Faculty</td>
-                            <td>Computer Science</td>
-                            <td><span class="badge active">Active</span></td>
+                            <td>{{ person.Name }}</td>
+                            <td>{{ fac.Designation }}</td>
+                            <td>{{ dept.DeptCode }}</td>
+                            <td>{{ person.Email }}</td>
                             <td>
-                                <button class="btn-icon btn-edit"><i class="fas fa-pen"></i></button>
-                                <button class="btn-icon btn-delete"><i class="fas fa-trash"></i></button>
+                                <a href="{{ url_for('admin_dashboard.delete_user', user_id=fac.FacultyID, role='Faculty') }}" 
+                                   class="btn-icon btn-delete" onclick="return confirm('Delete this faculty?')">
+                                   <i class="fas fa-trash"></i>
+                                </a>
                             </td>
                         </tr>
-                        </tbody>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </main>
     </div>
-    <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-        }
-    </script>
+
+    <div id="addStudentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="document.getElementById('addStudentModal').style.display='none'">&times;</span>
+            <h3>Add New Student</h3>
+            <form method="POST" action="{{ url_for('admin_dashboard.users') }}">
+                <input type="hidden" name="role" value="Student">
+                <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
+                <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+                <div class="form-group"><label>Password</label><input type="text" name="password" required></div>
+                <div class="form-group"><label>Roll No</label><input type="text" name="roll_no" required></div>
+                <div class="form-group"><label>Semester</label><input type="number" name="semester" required></div>
+                <div class="form-group">
+                    <label>Program</label>
+                    <select name="program_id">
+                        {% for p in programs %}
+                        <option value="{{ p.ProgramID }}">{{ p.ProgramCode }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="btn-view" style="width:100%">Create Student</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="addFacultyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="document.getElementById('addFacultyModal').style.display='none'">&times;</span>
+            <h3>Add New Faculty</h3>
+            <form method="POST" action="{{ url_for('admin_dashboard.users') }}">
+                <input type="hidden" name="role" value="Faculty">
+                <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
+                <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+                <div class="form-group"><label>Password</label><input type="text" name="password" required></div>
+                <div class="form-group"><label>Designation</label><input type="text" name="designation" required></div>
+                <div class="form-group"><label>Qualification</label><input type="text" name="qualification" required></div>
+                <div class="form-group">
+                    <label>Department</label>
+                    <select name="department_id">
+                        {% for d in departments %}
+                        <option value="{{ d.DepartmentID }}">{{ d.DeptName }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="btn-view" style="width:100%">Create Faculty</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

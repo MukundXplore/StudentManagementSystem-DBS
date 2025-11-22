@@ -9,96 +9,54 @@
 <body>
     <div class="app-container">
         <aside class="sidebar" id="sidebar">
-            <div class="close-sidebar" onclick="toggleSidebar()">
-                <i class="fas fa-times"></i>
-            </div>
             <div class="logo-area"><i class="fas fa-user-shield"></i></div>
-            
             <nav class="nav-menu">
-                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard') }}'">
-                    <i class="fas fa-th-large"></i> Overview
-                </button>
-                <button class="nav-btn" onclick="location.href='{{ url_for('admin_users') }}'">
-                    <i class="fas fa-users-cog"></i> Manage Users
-                </button>
-                <button class="nav-btn" onclick="location.href='{{ url_for('admin_courses') }}'">
-                    <i class="fas fa-book"></i> Programs
-                </button>
-                <button class="nav-btn active" onclick="location.href='{{ url_for('admin_approvals') }}'">
-                    <i class="fas fa-check-circle"></i> Approvals
-                </button>
-                <button class="nav-btn" onclick="location.href='{{ url_for('admin_announcements') }}'">
-                    <i class="fas fa-bullhorn"></i> Announcements
-                </button>
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard.dashboard') }}'">Overview</button>
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard.users') }}'">Manage Users</button>
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard.courses') }}'">Programs</button>
+                <button class="nav-btn active">Approvals</button>
+                <button class="nav-btn" onclick="location.href='{{ url_for('admin_dashboard.announcements') }}'">Announcements</button>
             </nav>
-
-            <div class="logout" onclick="location.href='{{ url_for('logout') }}'">
-                <i class="fas fa-sign-out-alt" style="margin-right:10px;"></i> Logout
-            </div>
+            <div class="logout" onclick="location.href='{{ url_for('auth.logout') }}'">Logout</div>
         </aside>
 
         <main class="main-content">
             <header>
-                <div class="menu-toggle" onclick="toggleSidebar()">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search requests...">
-                </div>
-                <div class="user-profile">
-                     <div style="text-align:right;">
-                        <h4>{{ user_name }}</h4>
-                        <span>System Administrator</span>
-                     </div>
-                    <img src="https://i.pravatar.cc/150?img=68" class="avatar">
-                </div>
+                <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search requests..."></div>
+                <div class="user-profile"><h4>{{ user_name }}</h4></div>
             </header>
-
-            <div class="banner">
-                <div class="banner-text">
-                    <h1>Pending Approvals</h1>
-                    <p>Review registration requests and fee waivers.</p>
-                </div>
-                <div class="banner-img">
-                    <i class="fas fa-clipboard-check"></i>
-                </div>
-            </div>
 
             <div class="table-card">
                 <div class="section-title">Requests Queue</div>
                 <table>
                     <thead>
-                        <tr>
-                            <th>Request ID</th>
-                            <th>Type</th>
-                            <th>Applicant</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
+                        <tr><th>Request Type</th><th>Student Name</th><th>Date</th><th>Status</th><th>Action</th></tr>
                     </thead>
                     <tbody>
+                        {% for req, student, person in requests %}
                         <tr>
-                            <td>REQ_091</td>
-                            <td>New Registration</td>
-                            <td>Rahul Verma</td>
-                            <td>Oct 10, 2023</td>
-                            <td><span class="badge pending">Pending</span></td>
+                            <td>{{ req.RequestType }}</td>
+                            <td>{{ person.Name }}</td>
+                            <td>{{ req.RequestDate.strftime('%Y-%m-%d') }}</td>
+                            <td><span class="badge pending">{{ req.Status }}</span></td>
                             <td>
-                                <button class="btn-icon btn-edit" style="color:green; background:#e6fffa;"><i class="fas fa-check"></i></button>
-                                <button class="btn-icon btn-delete"><i class="fas fa-times"></i></button>
+                                <a href="{{ url_for('admin_dashboard.process_request', req_id=req.RequestID, action='approve') }}" 
+                                   class="btn-icon btn-edit" style="color:green; background:#e6fffa;">
+                                   <i class="fas fa-check"></i>
+                                </a>
+                                <a href="{{ url_for('admin_dashboard.process_request', req_id=req.RequestID, action='reject') }}" 
+                                   class="btn-icon btn-delete">
+                                   <i class="fas fa-times"></i>
+                                </a>
                             </td>
                         </tr>
-                        </tbody>
+                        {% else %}
+                        <tr><td colspan="5">No pending requests.</td></tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </main>
     </div>
-    <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-        }
-    </script>
 </body>
 </html>
